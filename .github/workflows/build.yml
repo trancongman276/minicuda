@@ -37,7 +37,7 @@ jobs:
             NV_OS=ubuntu20.04
             NV_FLAVOR=runtime
       -
-        name: Build and push devel image
+        name: Build and push devel image 
         uses: docker/build-push-action@v3
         with:
           push: true
