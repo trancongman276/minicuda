@@ -32,7 +32,7 @@ jobs:
           context: .
           tags: doku9652/minicuda:11.4.3-runtime
           build-args: |
-            NV_CUDA=11.4.3
+            NV_CUDA=11-4-3
             NV_CUDNN=8
             NV_OS=ubuntu20.04
             NV_FLAVOR=runtime
@@ -44,7 +44,7 @@ jobs:
           context: .
           tags: doku9652/minicuda:11.6.2-runtime
           build-args: |
-            NV_CUDA=11.6.2
+            NV_CUDA=11-6-2
             NV_CUDNN=8
             NV_OS=ubuntu20.04
             NV_FLAVOR=runtime
@@ -56,7 +56,7 @@ jobs:
           context: .
           tags: doku9652/minicuda:11.4.3-devel
           build-args: |
-            NV_CUDA=11.4.3
+            NV_CUDA=11-4-3
             NV_CUDNN=8
             NV_OS=ubuntu20.04
             NV_FLAVOR=devel
@@ -68,7 +68,7 @@ jobs:
           context: .
           tags: doku9652/minicuda:11.6.2-devel
           build-args: |
-            NV_CUDA=11.6.2
+            NV_CUDA=11-6-2
             NV_CUDNN=8
             NV_OS=ubuntu20.04
             NV_FLAVOR=devel
