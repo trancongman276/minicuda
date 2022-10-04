@@ -19,6 +19,7 @@ FROM nvidia/cuda:${NV_CUDA}-cudnn${NV_CUDNN}-${NV_FLAVOR}-${NV_OS}
 ENV DEBIAN_FRONTEND=noninteractive
 # Install common packages
 SHELL ["/bin/bash", "-c"]
+RUN NV_CUDA=${NV_CUDA//./-};echo ${NV_CUDA:0:-2}
 RUN apt-get update > /dev/null && \
     NV_CUDA=${NV_CUDA//./-};echo ${NV_CUDA:0:-2}; apt-get install cuda-cupti-${NV_CUDA:0:-2} -y && \
     apt-get install --no-install-recommends --yes \
