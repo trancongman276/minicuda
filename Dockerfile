@@ -2,7 +2,8 @@
 # SETUP NVIDIA CUDA IMAGE
 # -----------------------------------------------------------------------------
 # Desired CUDA version of the image.
-ARG NV_CUDA=11.6.2
+ARG NV_CUDA_BASE=11.6
+ARG NV_CUDA_SUB=2
 # Desired CuDNN version of the image.
 ARG NV_CUDNN=8
 # Desired target OS of the image.
@@ -10,7 +11,7 @@ ARG NV_OS=ubuntu20.04
 # Desired target flavor of the image. Can be "runtime" or "devel".
 ARG NV_FLAVOR=runtime
 # The image will be built from suitable Nvidia's CUDA images.
-FROM nvidia/cuda:${NV_CUDA}-cudnn${NV_CUDNN}-${NV_FLAVOR}-${NV_OS}
+FROM nvidia/cuda:${NV_CUDA_BASE}.${NV_CUDA_SUB}-cudnn${NV_CUDNN}-${NV_FLAVOR}-${NV_OS}
 
 # -----------------------------------------------------------------------------
 # GENERAL SETTINGS
@@ -19,9 +20,8 @@ FROM nvidia/cuda:${NV_CUDA}-cudnn${NV_CUDNN}-${NV_FLAVOR}-${NV_OS}
 ENV DEBIAN_FRONTEND=noninteractive
 # Install common packages
 SHELL ["/bin/bash", "-c"]
-RUN NV_CUDA=${NV_CUDA//./-};echo ${NV_CUDA:0:-2}
 RUN apt-get update > /dev/null && \
-    NV_CUDA=${NV_CUDA//./-};echo ${NV_CUDA:0:-2}; apt-get install cuda-cupti-${NV_CUDA:0:-2} -y && \
+    apt-get install cuda-cupti-${NV_CUDA_BASE/./-} -y && \
     apt-get install --no-install-recommends --yes \
         git wget curl bzip2 cmake ca-certificates build-essential > /dev/null && \
     apt-get clean && \
