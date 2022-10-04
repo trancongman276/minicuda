@@ -19,7 +19,7 @@ FROM nvidia/cuda:${NV_CUDA}-cudnn${NV_CUDNN}-${NV_FLAVOR}-${NV_OS}
 ENV DEBIAN_FRONTEND=noninteractive
 # Install common packages
 RUN apt-get update > /dev/null && \
-    apt-get install cuda-cupti-11-4 && \ 
+    apt-get install cuda-cupti-11-4 -y && \ 
     apt-get install --no-install-recommends --yes \
         git wget curl bzip2 cmake ca-certificates build-essential > /dev/null && \
     apt-get clean && \
