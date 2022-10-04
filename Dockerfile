@@ -2,7 +2,7 @@
 # SETUP NVIDIA CUDA IMAGE
 # -----------------------------------------------------------------------------
 # Desired CUDA version of the image.
-ARG NV_CUDA=11.6.2
+ARG NV_CUDA=11-6-2
 # Desired CuDNN version of the image.
 ARG NV_CUDNN=8
 # Desired target OS of the image.
@@ -10,7 +10,7 @@ ARG NV_OS=ubuntu20.04
 # Desired target flavor of the image. Can be "runtime" or "devel".
 ARG NV_FLAVOR=runtime
 # The image will be built from suitable Nvidia's CUDA images.
-FROM nvidia/cuda:${NV_CUDA}-cudnn${NV_CUDNN}-${NV_FLAVOR}-${NV_OS}
+FROM nvidia/cuda:${NV_CUDA}-cudnn${NV_CUDNN//-/.}-${NV_FLAVOR}-${NV_OS}
 
 # -----------------------------------------------------------------------------
 # GENERAL SETTINGS
